@@ -1,5 +1,5 @@
 import Order from '../models/Order.js';
-import { sendEmail } from '../middlewares/MaileroMiddleware.js';
+// import { sendEmail } from '../middlewares/MaileroMiddleware.js';
 
 const SERVER_ERROR = 'Error Interno del Servidor.'
 
@@ -17,7 +17,7 @@ export const createOrder = async (req, res) => {
     const dateFormated = new Date(date.getFullYear(), date.getMonth(), date.getDate())
     const newOrder = new Order({orderId, date: dateFormated, products, total, toSend });
     await newOrder.save();
-    await sendEmail(toSend, orderId)
+    // await sendEmail(toSend, orderId)
     res.status(201).json(newOrder);
   } catch (error) {
     console.error('Error en el metodo createOrder() ', error);
