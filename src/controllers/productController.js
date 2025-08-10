@@ -129,3 +129,14 @@ export const deleteProduct = async (req, res) => {
         res.status(500).json({ msg: SERVER_ERROR})
      }
 }
+
+const isJsonString = (str) => {
+  if (typeof str !== 'string') return false;
+  try {
+    JSON.parse(str);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
