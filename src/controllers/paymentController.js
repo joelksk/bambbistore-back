@@ -1,5 +1,7 @@
 import mercadopago from '../config/mercadopago.js';
 import { Preference } from 'mercadopago';
+import dotenv from 'dotenv'
+dotenv.config()
 
 
 export const createPayment = async (req, res) => {
@@ -18,9 +20,9 @@ export const createPayment = async (req, res) => {
             body: {
                 items: preferenceItems,
                 back_urls: {
-                    success: 'https://df59-209-13-155-125.ngrok-free.app/payment-status', // redirige al finalizar exitosamente
-                    failure: 'https://df59-209-13-155-125.ngrok-free.app/payment-status', // redirige si falla
-                    pending: 'https://df59-209-13-155-125.ngrok-free.app/payment-status', // redirige si queda pendiente (por ejemplo, pago en efectivo)
+                    success: `https://bambbistore.onrender.com/payment-status`, // redirige al finalizar exitosamente
+                    failure: `https://bambbistore.onrender.com/payment-status`, // redirige si falla
+                    pending: `https://bambbistore.onrender.com/payment-status`, // redirige si queda pendiente (por ejemplo, pago en efectivo)
                     },
                     auto_return: 'approved' // hace que se redirija automáticamente si el pago fue aprobado
                 },
