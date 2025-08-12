@@ -140,3 +140,34 @@ const isJsonString = (str) => {
   }
 }
 
+/**
+ * Restaura el stock de los productos de una orden cancelada o rechazada
+ * @param {Array} products - Array de productos de la orden [{ product: ObjectId, quantity: Number, size: String }]
+ */
+export const restoreStockFromOrder = async (products) => {
+  for (const item of products) {
+    const { product, quantity, size } = item;
+
+    // Buscar producto
+    const productDoc = await Product.findById(product);
+    if (!productDoc) {
+      console.warn(`Producto no encontrado: ${product}`);
+      continue;
+    }
+
+    // Buscar el índice del tamaño
+    const stockIndex = productDoc.stock.findIndex(s => s.size === size);
+    if (stockIndex === -1) {
+      console.warn(`Talle ${size} no encontrado para producto ${productDoc._id}`);
+      continue;
+    }
+
+    // Sumar la cantidad al stock
+    productDoc.stock[stockIndex].availables += quantity;
+
+    // Guardar cambios
+    await productDoc.save();
+    console.log(`Stock restaurado para ${productDoc.name}, talle ${size}`);
+  }
+};
+

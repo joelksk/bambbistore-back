@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 src/request
+src/services/createAdmin.js
 
 # Editor directories and files
 .vscode/*

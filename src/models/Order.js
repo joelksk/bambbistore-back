@@ -6,10 +6,10 @@ const orderSchema = new mongoose.Schema({
     products: [{
         _id: false,
         product: {type: mongoose.Schema.Types.ObjectId, ref: 'Product'},
-        quantity: {type: Number, required: true},
-        size: {type: String, required: true},
+        quantity: {type: Number},
+        size: {type: String},
     }],
-    total: {type: Number, required: true},
+    total: {type: Number},
     status: {type: String, enum: [
         'recibido',
         'confirmado',
@@ -25,6 +25,7 @@ const orderSchema = new mongoose.Schema({
         email: {type: String, required: true},
         postCode: {type: String, required: true}
     },
+    mp_status: { type: String, default: 'pendiente'},
     andreaniCode: {
         code: {type: String},
         date: {type: Date}
