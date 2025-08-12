@@ -104,7 +104,7 @@ export const updateMpStatus = async (req, res) => {
                         </p>
 
                         <p>Seguí el estado de tu pedido desde este link:</p>
-                        <p><a href="https://www.bambbistore.com/track-order" style="color: #c21f35;">www.bambbistore.com/track-order</a></p>
+                        <p><a href="https://www.bambbistore.com.ar/track-order" style="color: #c21f35;">www.bambbistore.com.ar/track-order</a></p>
 
                         <p>Saludos,<br>
                         <strong>Bambbistore</strong></p>
