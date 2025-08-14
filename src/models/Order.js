@@ -19,11 +19,15 @@ const orderSchema = new mongoose.Schema({
     ], default: 'recibido'},
     toSend: {
         address: {type: String, required: true},
-        name: {type: String, required: true},
-        dni: {type: String, required: true},
+        betweenStreets: {type: String, required: true},
         city: {type: String, required: true},
+        dni: {type: String, required: true},
         email: {type: String, required: true},
-        postCode: {type: String, required: true}
+        heightSt: {type: String, required: true},
+        name: {type: String, required: true},
+        postCode: {type: String, required: true},
+        phone: {type: String, required: true},
+        references: {type: String, default: ''}
     },
     mp_status: { type: String, default: 'pendiente'},
     andreaniCode: {
